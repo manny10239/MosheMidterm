@@ -4,7 +4,6 @@ const friends = [
 class Player{
     constructor(name){
         this.name = name;
-        this.age = age;
         this.points = 0;
     }
 }
