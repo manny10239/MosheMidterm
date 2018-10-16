@@ -14,4 +14,4 @@ app.post('/players', (req , res) => {
     res.send(player);
 });
 
-module.export = app;
+module.exports = app;
