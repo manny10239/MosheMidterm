@@ -1,12 +1,10 @@
-const friends = [
+const workouts = require('./workouts');
 
-];
 class FitnessApp{
     constructor(){
         this.users = [];
-        this.workouts = [];
-        this.workDone = [];
-        
+        this.workouts = workouts;
+    
     }
 }
 module.exports = {

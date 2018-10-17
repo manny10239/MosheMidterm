@@ -12,7 +12,8 @@ app.post('/players', (req , res) => {
     const player = {
         id: fitapp.users.length + 1,
         name: req.body.name,
-        friends: []
+        friends: [],
+        workDone: []
     };
     fitapp.users.push(player);
     res.send(player);
@@ -45,5 +46,7 @@ app.put('/players/addfriend/:id', (req, res) => {
     user.friends.push(player);
     res.send(user);
 });
+
+
 
 module.exports = app;
