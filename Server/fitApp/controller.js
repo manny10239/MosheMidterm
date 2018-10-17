@@ -36,16 +36,20 @@ app.put('/players/:id', (req,res) => {
     res.send(player);
 });
 
-//add friend to friend array
-app.put('/players/addfriend/:id', (req, res) => {
-    const player = fitapp.users.find(c => c.id === parseInt(req.params.id));
-    if(!player){
-        res.status(404).send('The user with given ID was found');
+// searching for a friend with a name and add them to friend array of user id 1
+app.get('/players/addfriend/:name', (req,res) => {
+    const friend = fitapp.users.find(c => c.name === String(req.params.name));
+    if(!friend){
+        res.status(404).send('Friend not Found');
     }
-    const user = fitapp.users.find(c => c.id === 1);
-    user.friends.push(player);
-    res.send(user);
+    const mainUser = fitapp.users.find( c => c.id === 1);
+    if(mainUser.id === friend.id){
+        res.status(400).send('Cannot add yourself as a friend');
+    }
+    mainUser.friends.push(friend)
+    res.send(mainUser);
 });
+
 
 
 
