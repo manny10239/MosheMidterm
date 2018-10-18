@@ -4,6 +4,7 @@ class FitnessApp{
     constructor(){
         this.users = [];
         this.workouts = workouts;
+        this.filterUser = [];
     
     }
 }

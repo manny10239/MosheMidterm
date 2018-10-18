@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 //makes a user
 app.post('/users', (req , res) => {
-    const player = {
+    const user = {
         id: fitapp.users.length + 1,
         name: req.body.name,
         age: req.body.age,
@@ -20,7 +20,12 @@ app.post('/users', (req , res) => {
         workDone: [],
         intake:[]
     };
-    fitapp.users.push(player);
+     const filuser = {
+         name: req.body.name,
+         age: req.body.age
+     }
+    fitapp.filterUser.push(filuser);
+    fitapp.users.push(user);
     res.send(fitapp);
 });
 // gets the mainUser with its name
@@ -79,6 +84,16 @@ app.get('/caloricDeficit', (req, res) => {
     mainUser.calDef = def;
     res.send(mainUser);
 });
+// trying to display user name and age only 
+app.get('/users/stats', (req, res) => {
+    res.send(fitapp.filterUser);
+});
+// friend list stats
+app.get('/user/friendsStat', (req, res) => {
+    const mainUser = fitapp.users.find(c => c.id === 1);
+    res.send(mainUser.friends);
+});
+// method to show all stats to friend only
 
 //changes with id a player name
 app.put('/players/:id', (req,res) => {
@@ -113,6 +128,7 @@ app.get('/players/getMainUser/:name', (req, res) => {
     }
     res.send(mainUser);
 });
+
 
 
 module.exports = app;
