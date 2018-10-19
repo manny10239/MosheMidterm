@@ -93,41 +93,7 @@ app.get('/user/friendsStat', (req, res) => {
     const mainUser = fitapp.users.find(c => c.id === 1);
     res.send(mainUser.friends);
 });
-// method to show all stats to friend only
 
-//changes with id a player name
-app.put('/players/:id', (req,res) => {
-    const player = fitapp.users.find(c => c.id === parseInt(req.params.id));
-    if(!player){
-        res.status(404).send('The user with given ID was found');
-    }
-    player.name = req.body.name;
-    res.send(player);
-});
-
-// searching for a friend with a name and add them to friend array of user id 1
-app.get('/players/addfriend/:name', (req,res) => {
-    const friend = fitapp.users.find(c => c.name === String(req.params.name));
-    if(!friend){
-        res.status(404).send('Friend not Found');
-    }
-    const mainUser = fitapp.users.find( c => c.id === 1);
-    if(mainUser.id === friend.id){
-        res.status(400).send('Cannot add yourself as a friend');
-    }
-    friend.friend.push(mainUser);
-    mainUser.friends.push(friend);
-    res.send(fitapp);
-});
-
-// adding workouts completed to player workdone array
-app.get('/players/getMainUser/:name', (req, res) => {
-    const mainUser = fitapp.users.find(c => c.name === String(req.params.name));
-    if(!mainUser){
-        res.status(404).send('User Not Found');
-    }
-    res.send(mainUser);
-});
 
 
 
