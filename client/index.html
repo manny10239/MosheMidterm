@@ -7,18 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
+    <style>
+        .container{
+            background-color: green;
+            text-align: center;
+            padding: 20px;
+            width: 500px;
+            height: 300px;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Sign In</h1>
-    <form method="post" action="/Server/fitApp/users">
-        <label>User Name</label><br>
-        <input type="text" name="name"><br>
 
-        <label>Age</label><br>
-        <input type="number" name="age"><br>
+    <div class = "container">
+        <h1>Sign In</h1>
+        <form method="POST" action="/fitApp/users">
+            <label>User Name</label><br>
+            <input type="text" name="name"><br>
 
-        <input type="submit" value="Submit"><br>
-    </form>
-    
+            <label>Age</label><br>
+            <input type="number" name="age"><br>
+            <br>
+            <input type="submit" value="Submit"><br>
+        </form>
+    </div>
 </body>
 </html>

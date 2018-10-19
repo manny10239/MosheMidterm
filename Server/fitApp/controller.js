@@ -26,7 +26,7 @@ app.post('/users', (req , res) => {
      }
     fitapp.filterUser.push(filuser);
     fitapp.users.push(user);
-    res.send(fitapp);
+    res.send(filuser);
 });
 // gets the mainUser with its name
 app.get('/users/getUser/:name', (req,res) => {
@@ -93,8 +93,5 @@ app.get('/user/friendsStat', (req, res) => {
     const mainUser = fitapp.users.find(c => c.id === 1);
     res.send(mainUser.friends);
 });
-
-
-
 
 module.exports = app;
